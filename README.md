@@ -12,7 +12,7 @@ Web admin panel for your Project Zomboid dedicated server.
 ## Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/pz-admin.git
+git clone https://github.com/Hipoglos/pz-admin.git
 cd pz-admin
 bash scripts/setup.sh
 ```
