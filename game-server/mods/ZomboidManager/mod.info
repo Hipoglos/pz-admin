@@ -1,0 +1,6 @@
+name=ZomboidManager
+id=ZomboidManager
+description=Writes player positions to players_live.json for the pz-admin web panel live map.
+url=
+modversion=1.0
+pzversion=42

@@ -1,0 +1,31 @@
+:root {
+  --bg-dark:   #0a0c0a;
+  --bg-panel:  #0f1410;
+  --bg-card:   #141a14;
+  --bg-hover:  #1a231a;
+  --border:         #2a3a2a;
+  --border-bright:  #3d5c3d;
+  --green:     #4ade80;
+  --green-dim: #22c55e;
+  --green-glow:rgba(74,222,128,0.12);
+  --red:       #f87171;
+  --red-dim:   #dc2626;
+  --amber:     #fbbf24;
+  --text-primary:   #d4e8d4;
+  --text-secondary: #7a9a7a;
+  --text-dim:       #4a6a4a;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-ui:   'Rajdhani', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse-green { 0%,100% { opacity:1; } 50% { opacity:0.4; } }

@@ -1,0 +1,41 @@
+# PZ Admin Panel
+# Start:   docker compose up -d
+# Stop:    docker compose down
+# Logs:    docker compose logs -f
+# Rebuild: docker compose build && docker compose up -d
+
+services:
+  pz-admin-backend:
+    build: ./backend
+    container_name: pz-admin-backend
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - PORT=3001
+      - RCON_HOST=${RCON_HOST}
+      - RCON_PORT=${RCON_PORT:-27015}
+      - RCON_PASSWORD=${RCON_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - PZ_CONFIG_DIR=/pz-config
+    volumes:
+      - ${PZ_CONFIG_PATH}:/pz-config:rw
+      - ./secrets/pw_hash:/run/secrets/pw_hash:ro
+    networks:
+      - pz-admin
+
+  pz-admin-frontend:
+    build: ./frontend
+    container_name: pz-admin-frontend
+    restart: unless-stopped
+    ports:
+      - "${ADMIN_PORT:-8080}:80"
+    depends_on:
+      - pz-admin-backend
+    networks:
+      - pz-admin
+
+networks:
+  pz-admin:
+    driver: bridge
